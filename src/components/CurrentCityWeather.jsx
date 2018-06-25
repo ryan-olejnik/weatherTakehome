@@ -11,11 +11,11 @@ class CurrentCityWeather extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log('Searching for Toronto');
+  getWeatherData(city){
+    console.log('Searching for', city);
     axios.get('https://api.openweathermap.org/data/2.5/weather', {
       params: {
-        q: 'toronto',
+        q: city,
         APPID: API_KEY
       }
     })
@@ -37,13 +37,23 @@ class CurrentCityWeather extends Component {
     }) 
   }
 
+  componentWillReceiveProps(newProps){
+    this.getWeatherData(newProps.city)
+  }
+
+  componentDidMount(){
+    // Default to showing Toronto Weather
+    this.getWeatherData('Toronto')
+  }
+
   render() {
+    const currentCity = (this.props.city)? this.props.city : 'Toronto'
     if (this.state.isLoading){
       return (<h1>Loading City Data...</h1>)
     } else {
       return (
         <div>
-          <h1>Toronto Weather</h1>
+          <h1>{currentCity} Weather</h1>
           <p>Current Temperature = {this.state.currentWeather.temp}°C</p>
           <p>Current Pressure = {this.state.currentWeather.pressure}°C</p>
           <p>Current Humidity = {this.state.currentWeather.humidity}°C</p>
