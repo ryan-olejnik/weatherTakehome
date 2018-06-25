@@ -27,10 +27,11 @@ class CurrentCityWeather extends Component {
         isLoading: false,
         currentWeather: { 
           temp: Math.round(response.data.main.temp - 273),
-          pressure: response.data.main.pressure,
+          pressure: response.data.main.pressure / 1000,
           humidity: response.data.main.humidity,
           temp_min: Math.round(response.data.main.temp_min - 273),
           temp_max: Math.round(response.data.main.temp_max - 273),
+          wind_speed: response.data.wind.speed,
           icon: response.data.weather[0].icon,
           description: response.data.weather[0].description
         }
@@ -64,8 +65,9 @@ class CurrentCityWeather extends Component {
             <Col md={6} id='right-column'>
               <p>Daily High = {this.state.currentWeather.temp_max}°C</p>
               <p>Daily Low = {this.state.currentWeather.temp_min}°C</p>
-              <p>Air Pressure = {this.state.currentWeather.pressure}°C</p>
-              <p>Humidity = {this.state.currentWeather.humidity}°C</p>
+              <p>Air Pressure = {this.state.currentWeather.pressure}kPa</p>
+              <p>Humidity = {this.state.currentWeather.humidity}%</p>
+              <p>WindSpeed = {this.state.currentWeather.wind_speed}m/s</p>
             </Col>
           </Row>
         </Grid>
