@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CurrentCityWeather from './components/CurrentCityWeather.jsx';
-import { Button } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 import API_KEY from './API_KEY';
 
 const Root = styled.div`
@@ -19,11 +19,18 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Button onClick={()=>{this.setState({city: 'Toronto'})}}>Toronto</Button>
-        <Button onClick={()=>{this.setState({city: 'Montreal'})}}>Montreal</Button>
-        <Button onClick={()=>{this.setState({city: 'Ottawa'})}}>Ottawa</Button>
-        <CurrentCityWeather city={this.state.city}/>
+      <div className='container'>
+        <Tabs defaultActiveKey={1} animation={false} id='city-tab-content' >
+          <Tab eventKey={1} title="Toronto">
+            <CurrentCityWeather city='Toronto' />
+          </Tab>
+          <Tab eventKey={2} title="Ottawa">
+            <CurrentCityWeather city='Ottawa' />
+          </Tab>
+          <Tab eventKey={3} title="Montreal">
+            <CurrentCityWeather city='Montreal' />
+          </Tab>
+        </Tabs>
       </div>
       )
   }
