@@ -28,7 +28,8 @@ class CurrentCityWeather extends Component {
           pressure: response.data.main.pressure,
           humidity: response.data.main.humidity,
           temp_min: Math.round(response.data.main.temp_min - 273),
-          temp_max: Math.round(response.data.main.temp_max - 273)
+          temp_max: Math.round(response.data.main.temp_max - 273),
+          icon: response.data.weather[0].icon
         }
       });
     })
@@ -59,6 +60,7 @@ class CurrentCityWeather extends Component {
           <p>Current Humidity = {this.state.currentWeather.humidity}°C</p>
           <p>Max Daily Temp = {this.state.currentWeather.temp_max}°C</p>
           <p>Min Daily Temp = {this.state.currentWeather.temp_min}°C</p>
+          <img id='weather-logo' src={`http://openweathermap.org/img/w/${this.state.currentWeather.icon}.png`} />
         </div>
         )      
     }
