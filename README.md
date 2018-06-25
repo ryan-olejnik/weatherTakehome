@@ -4,3 +4,5 @@
 2. Install dependencies using the command `yarn install`
 3. Run `yarn start` to start the project.
 
+## Screenshot
+!['TorontoWeather'](https://github.com/ryan-olejnik/weatherTakehome/blob/master/screenshots/torontoWeather.png)
