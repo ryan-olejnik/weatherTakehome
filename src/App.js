@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
 import CurrentCityWeather from './components/CurrentCityWeather.jsx';
 import { Tab, Tabs } from 'react-bootstrap';
 import './App.css';
-
-// const Root = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex: 1;
-// `
 
 class App extends Component {
   constructor(){
@@ -17,6 +10,7 @@ class App extends Component {
       city: null 
     }
   }
+
   render() {
     return (
       <div className='container'>
@@ -36,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;

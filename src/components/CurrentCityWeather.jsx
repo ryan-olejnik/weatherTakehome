@@ -9,12 +9,13 @@ class CurrentCityWeather extends Component {
     super();
     this.state = {
       currentWeather: {},
-      isLoading: true
+      isLoading: true,
+      API_error: false
     }
   }
 
   getWeatherData(city){
-    console.log('Searching for', city);
+    console.log('Fetching weather data for:', city);
     axios.get('https://api.openweathermap.org/data/2.5/weather', {
       params: {
         q: city,
@@ -38,7 +39,8 @@ class CurrentCityWeather extends Component {
       });
     })
     .catch((error)=>{
-      console.log('Error fetching data from OpenWeatherAPI:', error);
+      console.log('Error fetching data from OpenWeatherMap API:', error);
+      this.setState({API_error: true})
     }) 
   }
 
@@ -47,8 +49,10 @@ class CurrentCityWeather extends Component {
   }
 
   render() {
-    if (this.state.isLoading){
-      return (<h1>Loading City Data...</h1>)
+    if (this.state.API_error){
+      return (<h1>Error fetching weather data from OpenWeatherMap API</h1>)
+    } else if (this.state.isLoading){
+      return (<h1>Loading City Data...</h1>);
     } else {
       return (
         <Grid id='weather-container'>
