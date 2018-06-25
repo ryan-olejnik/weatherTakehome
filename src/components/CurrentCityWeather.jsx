@@ -23,11 +23,11 @@ class CurrentCityWeather extends Component {
       this.setState({
         isLoading: false,
         currentWeather: { 
-          temp: response.data.main.temp,
+          temp: Math.round(response.data.main.temp - 273),
           pressure: response.data.main.pressure,
           humidity: response.data.main.humidity,
-          temp_min: response.data.main.temp_min,
-          temp_max: response.data.main.temp_max,
+          temp_min: Math.round(response.data.main.temp_min - 273),
+          temp_max: Math.round(response.data.main.temp_max - 273)
         }
       });
     })
@@ -41,11 +41,11 @@ class CurrentCityWeather extends Component {
     return (
       <div>
         <h1>Toronto Weather</h1>
-        <p>Current Temperature = {this.state.currentWeather.temp}</p>
-        <p>Current Pressure = {this.state.currentWeather.pressure}</p>
-        <p>Current Humidity = {this.state.currentWeather.humidity}</p>
-        <p>Max Daily Temp = {this.state.currentWeather.temp_max}</p>
-        <p>Min Daily Temp = {this.state.currentWeather.temp_min}</p>
+        <p>Current Temperature = {this.state.currentWeather.temp}°C</p>
+        <p>Current Pressure = {this.state.currentWeather.pressure}°C</p>
+        <p>Current Humidity = {this.state.currentWeather.humidity}°C</p>
+        <p>Max Daily Temp = {this.state.currentWeather.temp_max}°C</p>
+        <p>Min Daily Temp = {this.state.currentWeather.temp_min}°C</p>
       </div>
 
       )
