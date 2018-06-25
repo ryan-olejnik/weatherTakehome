@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import CurrentCityWeather from './components/CurrentCityWeather.jsx';
 import { Tab, Tabs } from 'react-bootstrap';
 import './App.css';
 
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`
+// const Root = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1;
+// `
 
 class App extends Component {
   constructor(){

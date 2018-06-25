@@ -54,7 +54,7 @@ class CurrentCityWeather extends Component {
         <Grid id='weather-container'>
           <Row>
             <Col md={6} id='left-column'>
-              <img id='weather-logo' src={`http://openweathermap.org/img/w/${this.state.currentWeather.icon}.png`} />
+              <img id='weather-logo' alt='weather-logo' src={`http://openweathermap.org/img/w/${this.state.currentWeather.icon}.png`} />
               <p>{
                 this.state.currentWeather.description.replace(/\w\S*/g, function(txt){
                   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
