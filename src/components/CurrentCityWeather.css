@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+#weather-logo{
+  height:110px;
+}
+
+#weather-container{
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#right-column{
+  padding:50px;
+}

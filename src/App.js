@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import CurrentCityWeather from './components/CurrentCityWeather.jsx';
 import { Tab, Tabs } from 'react-bootstrap';
-import API_KEY from './API_KEY';
+import './App.css';
 
 const Root = styled.div`
   display: flex;

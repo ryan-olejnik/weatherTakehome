@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import API_KEY from '../API_KEY';
+import { Grid, Row, Col } from 'react-bootstrap';
+import './CurrentCityWeather.css';
 
 class CurrentCityWeather extends Component {
   constructor(){
@@ -39,35 +41,34 @@ class CurrentCityWeather extends Component {
     }) 
   }
 
-  componentWillReceiveProps(newProps){
-    this.getWeatherData(newProps.city)
-  }
-
   componentDidMount(){
-    // Default to showing Toronto Weather
-    this.getWeatherData('Toronto')
+    this.getWeatherData(this.props.city)
   }
 
   render() {
-    const currentCity = (this.props.city)? this.props.city : 'Toronto'
     if (this.state.isLoading){
       return (<h1>Loading City Data...</h1>)
     } else {
       return (
-        <div>
-          <h1>{currentCity} Weather</h1>
-          <p>Current Temperature = {this.state.currentWeather.temp}°C</p>
-          <p>Current Pressure = {this.state.currentWeather.pressure}°C</p>
-          <p>Current Humidity = {this.state.currentWeather.humidity}°C</p>
-          <p>Max Daily Temp = {this.state.currentWeather.temp_max}°C</p>
-          <p>Min Daily Temp = {this.state.currentWeather.temp_min}°C</p>
-          <img id='weather-logo' src={`http://openweathermap.org/img/w/${this.state.currentWeather.icon}.png`} />
-          <p>{
-            this.state.currentWeather.description.replace(/\w\S*/g, function(txt){
-              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            })}
-            </p>
-        </div>
+        <Grid id='weather-container'>
+          <Row>
+            <Col md={6} id='left-column'>
+              <img id='weather-logo' src={`http://openweathermap.org/img/w/${this.state.currentWeather.icon}.png`} />
+              <p>{
+                this.state.currentWeather.description.replace(/\w\S*/g, function(txt){
+                  return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                })}
+                </p>
+              <p>{this.state.currentWeather.temp}°C</p>
+            </Col>
+            <Col md={6} id='right-column'>
+              <p>Daily High = {this.state.currentWeather.temp_max}°C</p>
+              <p>Daily Low = {this.state.currentWeather.temp_min}°C</p>
+              <p>Air Pressure = {this.state.currentWeather.pressure}°C</p>
+              <p>Humidity = {this.state.currentWeather.humidity}°C</p>
+            </Col>
+          </Row>
+        </Grid>
         )      
     }
   }
